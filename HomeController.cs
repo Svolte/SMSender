@@ -22,7 +22,7 @@ namespace SMSender
         public async Task<IActionResult> Test()
         {
             var text = @"Hello {{name}}! You have just won {{value}} dollars!";
-            var result = await _message.SendMessage(text,
+            var result = await _message.SendMessage("+46700039001", text,
                 new Dictionary<string, object> { { "name", "Anton" }, { "value", "5000" } });
             return Json(result);
         }

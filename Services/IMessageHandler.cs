@@ -5,6 +5,6 @@ namespace SMSender.Services
 {
     public interface IMessageHandler
     {
-        Task<string> SendMessage(string template, Dictionary<string, object> values);
+        Task<string> SendMessage(string receiver, string text, Dictionary<string, object> values);
     }
 }

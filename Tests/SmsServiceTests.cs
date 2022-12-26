@@ -39,7 +39,7 @@ namespace SMSender.Tests
             var message = "Hello World!";
 
             // Act
-            await _sut.SendMessageAsync(phoneNumber, message, "no");
+            await _sut.SendMessageAsync(phoneNumber, message);
 
             // Assert
             // Assert.True(result);

@@ -10,6 +10,7 @@
       <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
       <PackageReference Include="Flurl.Http" Version="4.0.0-pre3" />
       <PackageReference Include="Handlebars.Net" Version="2.1.2" />
+      <PackageReference Include="libphonenumber-csharp" Version="8.13.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0-preview-20221221-03" />

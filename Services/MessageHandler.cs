@@ -6,10 +6,18 @@ namespace SMSender.Services
 {
     public class MessageHandler : IMessageHandler
     {
-        public async Task<string> SendMessage(string text, Dictionary<string, object> values)
+        private readonly ISmsApi _api;
+
+        public MessageHandler(ISmsApi api)
+        {
+            _api = api;
+        }
+
+        public async Task<string> SendMessage(string receiver, string text, Dictionary<string, object> values)
         {
             var template = Handlebars.Compile(text);
             var result = template(values);
+            await _api.SendMessageAsync(receiver, text);
             return result;
         }
     }

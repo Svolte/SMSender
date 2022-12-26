@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Flurl.Http;
 using Flurl.Util;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +17,10 @@ namespace SMSender.Services
         }
 
         public async Task SendMessageAsync(string receiver, string message, string dryrun = "yes")
-            => await "https://api.46elks.com/a1/SMS"
+        {
+            if (!receiver.IsValidPhoneNumber())
+                throw new Exception($"The provided phone number {receiver} does not seem to be a valid phone number.");
+            await "https://api.46elks.com/a1/SMS"
                 .WithBasicAuth(_config["SmsUsername"], _config["SmsSecret"]).PostUrlEncodedAsync(
                     new
                     {
@@ -25,5 +29,6 @@ namespace SMSender.Services
                         message,
                         dryrun
                     }.ToKeyValuePairs()).ReceiveJson<SendSmsResponse>();
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace SMSender.Tests
     {
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly MessageHandler _sut;
+        private readonly string _defaultReceiver = "+46700039001";
 
         public MessageHandlerTests(ITestOutputHelper testOutputHelper)
         {
@@ -29,7 +30,7 @@ namespace SMSender.Tests
         public async Task SendMessage_ReturnsCorrectlyFormattedString()
         {
             var expectedResult = "Hej Anton";
-            var result = await _sut.SendMessage(@"Hej {{name}}",
+            var result = await _sut.SendMessage(_defaultReceiver, @"Hej {{name}}",
                 new Dictionary<string, object> { { "name", "Anton" } });
             _testOutputHelper.WriteLine(result);
             Assert.True(expectedResult == result);
@@ -39,7 +40,7 @@ namespace SMSender.Tests
         public async Task SendMessage_FormatsMessageDynamically()
         {
             var filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                @"Tests\test.xlsx");
+                @"Tests/test.xlsx");
             var text =
                 @"Hello, {{Name}}. How wonderful that your phone number is {{Phone}}. I also added some additional properties: {{TestProperty1}} {{TestProperty2}}";
             await using var stream = File.OpenRead(filePath);
@@ -52,7 +53,7 @@ namespace SMSender.Tests
                     _testOutputHelper.WriteLine($"{prop.Name} = {prop.GetValue(row.Value)}");
                 }
 
-                var result = await _sut.SendMessage(text, row.ToDictionary());
+                var result = await _sut.SendMessage(_defaultReceiver, text, row.ToDictionary());
                 _testOutputHelper.WriteLine($"Sent message: {result}");
             }
         }
