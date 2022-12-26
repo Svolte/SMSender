@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using HandlebarsDotNet;
 
-namespace SMSender
+namespace SMSender.Services
 {
     public class MessageHandler : IMessageHandler
     {

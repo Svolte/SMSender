@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using AutoFixture;
 using AutoFixture.AutoMoq;
+using SMSender.Services;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace SMSender
+namespace SMSender.Tests
 {
     public class MessageHandlerTests
     {
@@ -15,7 +16,7 @@ namespace SMSender
         public MessageHandlerTests(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
-            var fixture = new Fixture().Customize(new AutoMoqCustomization() { ConfigureMembers = true });
+            var fixture = new Fixture().Customize(new AutoMoqCustomization { ConfigureMembers = true });
             _sut = fixture.Create<MessageHandler>();
         }
 
