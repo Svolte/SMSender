@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using Npoi.Mapper;
 
 namespace SMSender
 {
@@ -16,6 +17,18 @@ namespace SMSender
                     return a;
                 });
             return eo;
+        }
+
+        public static Dictionary<string, object> ToDictionary(this RowInfo<dynamic> rowInfo)
+        {
+            var dict = new Dictionary<string, object>();
+            foreach (var prop in rowInfo.Value.GetType().GetProperties())
+            {
+                var value = prop.GetValue(rowInfo.Value);
+                dict.Add(prop.Name, (object) prop.GetValue(rowInfo.Value));
+            }
+
+            return dict;
         }
     }
 }
