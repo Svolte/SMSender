@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSender", "SMSender.csproj", "{24B32B33-350E-403D-91D6-A0214A8B228A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24B32B33-350E-403D-91D6-A0214A8B228A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B32B33-350E-403D-91D6-A0214A8B228A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B32B33-350E-403D-91D6-A0214A8B228A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B32B33-350E-403D-91D6-A0214A8B228A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
