@@ -18,7 +18,7 @@ namespace SMSender.Tests
             _testOutputHelper = testOutputHelper;
             var fixture = new Fixture().Customize(new AutoMoqCustomization { ConfigureMembers = false });
             var config = InitConfiguration();
-            fixture.Register<IConfiguration>(() => config);
+            fixture.Register(() => config);
             _sut = fixture.Create<SmsApi>();
         }
         

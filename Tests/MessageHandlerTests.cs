@@ -17,7 +17,6 @@ namespace SMSender.Tests
     {
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly MessageHandler _sut;
-        private readonly string _defaultReceiver = "+46700039001";
 
         public MessageHandlerTests(ITestOutputHelper testOutputHelper)
         {
@@ -27,17 +26,18 @@ namespace SMSender.Tests
         }
 
         [Fact]
-        public async Task SendMessage_ReturnsCorrectlyFormattedString()
+        public async Task FillTemplate_ReturnsCorrectlyFormattedString()
         {
             var expectedResult = "Hej Anton";
-            var result = await _sut.SendMessage(_defaultReceiver, @"Hej {{name}}",
+            var result = _sut.FillTemplate(@"Hej {{name}}",
                 new Dictionary<string, object> { { "name", "Anton" } });
             _testOutputHelper.WriteLine(result);
             Assert.True(expectedResult == result);
         }
 
+        // [Fact(Skip = "Intended for verifying input parsed input batch")]
         [Fact]
-        public async Task SendMessage_FormatsMessageDynamically()
+        public async Task FillTemplate_FormatsMessageDynamically()
         {
             var filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                 @"Tests/test.xlsx");
@@ -53,8 +53,8 @@ namespace SMSender.Tests
                     _testOutputHelper.WriteLine($"{prop.Name} = {prop.GetValue(row.Value)}");
                 }
 
-                var result = await _sut.SendMessage(_defaultReceiver, text, row.ToDictionary());
-                _testOutputHelper.WriteLine($"Sent message: {result}");
+                var result = _sut.FillTemplate(text, row.ToDictionary());
+                _testOutputHelper.WriteLine($"Filled template: {result}");
             }
         }
     }

@@ -13,12 +13,15 @@ namespace SMSender.Services
             _api = api;
         }
 
-        public async Task<string> SendMessage(string receiver, string text, Dictionary<string, object> values)
+        public string FillTemplate(string text, Dictionary<string, object> values)
         {
             var template = Handlebars.Compile(text);
             var result = template(values);
-            await _api.SendMessageAsync(receiver, text);
             return result;
+        }
+
+        public async Task SendMessage(string receiver, string message)
+        {
         }
     }
 }

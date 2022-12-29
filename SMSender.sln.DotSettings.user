@@ -4,5 +4,7 @@
     &lt;TestId&gt;xUnit::24B32B33-350E-403D-91D6-A0214A8B228A::net5.0::SMSender.Tests.AntonTests.TestReadFile&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::24B32B33-350E-403D-91D6-A0214A8B228A::net5.0::SMSender.Tests.MessageHandlerTests.SendMessage_FormatsMessageDynamically&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::24B32B33-350E-403D-91D6-A0214A8B228A::net5.0::SMSender.Tests.SmsServiceTests.SendSms_WhenCalled_ShouldReturnTrue&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::24B32B33-350E-403D-91D6-A0214A8B228A::net5.0::SMSender.Tests.MessageHandlerTests.FillTemplate_ReturnsCorrectlyFormattedString&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::24B32B33-350E-403D-91D6-A0214A8B228A::net5.0::SMSender.Tests.MessageHandlerTests.FillTemplate_FormatsMessageDynamically&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
